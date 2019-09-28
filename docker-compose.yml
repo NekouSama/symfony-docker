@@ -5,7 +5,21 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     image: symfony
+    depends_on:
+      - 'db'
     ports:
-    - 81:80
+      - 81:80
     volumes:
-    - .:/app/
+      - .:/app/
+
+  db:
+    container_name: db
+    image: postgres:10-alpine
+    ports:
+      - '15432:5432'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 18080:8080

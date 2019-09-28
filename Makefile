@@ -15,3 +15,14 @@ rerun: rebuild run
 
 compose:
 	docker-compose up --build -d
+
+down:
+   docker-compose down
+
+up:
+   docker-compose up -d
+
+reload: down up
+
+bash-app:
+   docker-compose exec app sh
